@@ -17,5 +17,12 @@
 			};
 			params.cache.push(data);
 		});
+		/*显示数据后，调用所需函数*/
+		var callback = function(callid) {
+			if($.isFunction(params.callback)){
+				params.callback.call(callid.get(0));
+			}
+		};
+		
 	}
 })(jQuery);
