@@ -1,14 +1,14 @@
 (function($) {
 	$.fn.lazyload = function(option) {
 		var defaults = {
-			attr: "data-url",
 			container: $(window),
 			callback: $.noop
 		};
-		var params = $.extend({},defaults,option||{});
+		var params = $.extend({}, defaults, option || {});
 		params.cache = [];
-		$(this).each(function(){
-			var node = this.nodeName.toLowerCase(),url = $(this).attr(params["attr"]);
+		$(this).each(function() {
+			var node = this.nodeName.toLowerCase(),
+				url = $(this).attr(params["attr"]);
 			/*重组存放到cache*/
 			var data = {
 				obj: $(this),
@@ -19,34 +19,40 @@
 		});
 		/*显示数据后，回调函数*/
 		var callback = function(callid) {
-			if($.isFunction(params.callback)){
+			if($.isFunction(params.callback)) {
 				params.callback.call(callid.get(0));
 			}
 		};
 		/*动态显示数据*/
 		var loading = function() {
-			var contHeight = params.container.height();/*默认为window的高度*/
-			if ($(window).get(0) === window) {
+			var contHeight = params.container.height(); /*默认为window的高度*/
+			if($(window).get(0) === window) {
 				contop = $(window).scrollTop();
-			}else {
+			} else {
 				contop = params.container.offset().top;
 			}
-			
-			$.each(params.cache, function(i,data) {
-				var o = data.obj, tag = data.tag, url = data.url, post, posb;
-				if(o){
+
+			$.each(params.cache, function(i, data) {
+				var o = data.obj,
+					tag = data.tag,
+					url = data.url,
+					post, posb;
+				if(o) {
 					post = o.offset().top - contop, posb = post + o.height();
-					if (o.is(':visiable')&&(post >= 0 && post < contHeight)||(posb > 0 && posb <= contHeight)){
-						if(!url){
-							callback(o);/*无地址直接触发回调函数*/
-						}else if (tag === "img"){
+					console.log(1);
+					if(o.is(':visiable') && (post >= 0 && post < contHeight) || (posb > 0 && posb <= contHeight)) {
+						if(!url) {
+							callback(o); /*无地址直接触发回调函数*/
+						} else if(tag === "img") {
 							/*图片，改src*/
 							callback(o.attr("src", url));
-						}else {
+							console.log(3);
+						} else {
 							/*非图片，load资源*/
-							o.load(url,{},function(){
+							o.load(url, {}, function() {
 								callback(o);
 							});
+							console.log(4);
 						}
 						data.obj = null;
 						/*已经加载的资源不再加载*/
@@ -54,9 +60,10 @@
 				}
 			});
 		};
-		
+		console.log(2);
 		loading();
 		/*添加scroll事件*/
-		params.container.bind("scroll",loading);
+		params.container.bind("scroll", loading);
+		console.log(5);
 	};
 })(jQuery);
