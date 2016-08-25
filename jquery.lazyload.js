@@ -41,7 +41,7 @@
 				if(o) {
 					post = o.offset().top - contop, posb = post + o.height();
 					console.log(1);
-					if(o.is(':visible') && (post >= 0 && post < contHeight) || (posb > 0 && posb <= contHeight)) {
+					if(o.is(':visible') && ((post >= 0 && post < contHeight) || (posb > 0 && posb <= contHeight))) {
 						if(!url) {
 							callback(o); /*无地址直接触发回调函数*/
 						} else if(tag === "img") {
