@@ -17,12 +17,46 @@
 			};
 			params.cache.push(data);
 		});
-		/*显示数据后，调用所需函数*/
+		/*显示数据后，回调函数*/
 		var callback = function(callid) {
 			if($.isFunction(params.callback)){
 				params.callback.call(callid.get(0));
 			}
 		};
+		/*动态显示数据*/
+		var loading = function() {
+			var contHeight = params.container.height();/*默认为window的高度*/
+			if ($(window).get(0) === window) {
+				contop = $(window).scrollTop();
+			}else {
+				contop = params.container.offset().top;
+			}
+			
+			$.each(params.cache, function(i,data) {
+				var o = data.obj, tag = data.tag, url = data.url, post, posb;
+				if(o){
+					post = o.offset().top - contop, posb = post + o.height();
+					if (o.is(':visiable')&&(post >= 0 && post < contHeight)||(posb > 0 && posb <= contHeight)){
+						if(!url){
+							callback(o);/*无地址直接触发回调函数*/
+						}else if (tag === "img"){
+							/*图片，改src*/
+							callback(o.attr("src", url));
+						}else {
+							/*非图片，load资源*/
+							o.load(url,{},function(){
+								callback(o);
+							});
+						}
+						data.obj = null;
+						/*已经加载的资源不再加载*/
+					}
+				}
+			});
+		};
 		
-	}
+		loading();
+		/*添加scroll事件*/
+		params.container.bind("scroll",loading);
+	};
 })(jQuery);
