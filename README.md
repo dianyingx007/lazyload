@@ -24,7 +24,7 @@ bug fix:
 
 需加载的元素原地址，绑定在元素的data-url属性上，例：
 
-<div class="lazyload" data-url="loaded.html">WAIT LOADING</div>
+		<div class="lazyload" data-url="loaded.html">WAIT LOADING</div>
 
 ##可用参数：
 
