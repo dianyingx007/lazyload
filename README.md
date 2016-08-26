@@ -10,7 +10,7 @@
 
 		$(".lazyload").lazyload();
 
-		表示所有class名为lazyload的元素绑定了延迟加载lazyload
+    表示所有class名为lazyload的元素绑定了延迟加载lazyload
 
 需加载的元素原地址，绑定在元素的data-url属性上，例：
 
@@ -19,11 +19,11 @@
 ##可用参数：
 
 <table>
-	<th>
-		<td>参数</td>
-		<td>默认值</td>
-		<td>解释</td>
-	</th>
+	<tr>
+		<th>参数</th>
+		<th>默认值</th>
+		<th>解释</th>
+	</tr>
 	<tr>
 		<td>attr</td>
 		<td>data-url</td>
@@ -43,9 +43,14 @@
 
 **示例：**
 
-$(".lazyload").lazyload({
-	container: $("#divdiv"),
-	callback: function(){
-		this.style.backgroud-color="#333"
-	}
-});
+		$(".lazyload").lazyload({
+		
+			container: $("#divdiv"),
+			
+			callback: function(){
+			
+				this.style.backgroud-color="#333"
+				
+			}
+			
+		});
