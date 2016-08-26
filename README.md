@@ -10,7 +10,7 @@
 
 		$(".lazyload").lazyload();
 
-    表示所有class名为lazyload的元素绑定了延迟加载lazyload
+表示所有class名为lazyload的元素绑定了延迟加载lazyload
 
 需加载的元素原地址，绑定在元素的data-url属性上，例：
 
@@ -44,13 +44,8 @@
 **示例：**
 
 		$(".lazyload").lazyload({
-		
 			container: $("#divdiv"),
-			
 			callback: function(){
-			
 				this.style.backgroud-color="#333"
-				
 			}
-			
 		});
