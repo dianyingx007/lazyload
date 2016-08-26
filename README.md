@@ -1,5 +1,14 @@
 # lazyload
 
+##v1.1
+
+bug fix: 
+
+修复元素是否在视图内的判定问题：
+&amp;&amp;优先级高于||
+
+##v1.0
+
 ### 延迟加载 页面滚动时图片等元素
 
 ##使用说明：
@@ -10,7 +19,7 @@
 
 		$(".lazyload").lazyload();
 
-表示所有class名为lazyload的元素绑定了延迟加载lazyload
+-表示所有class名为lazyload的元素绑定了延迟加载lazyload
 
 需加载的元素原地址，绑定在元素的data-url属性上，例：
 
