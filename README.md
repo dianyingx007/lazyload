@@ -68,5 +68,6 @@ bug fix:
 			container: $("#divdiv"),
 			callback: function(){
 				this.style.backgroud-color="#333"
-			}
+			}£¬
+			threshold:100
 		});
