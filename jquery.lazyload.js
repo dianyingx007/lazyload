@@ -48,13 +48,11 @@
 						} else if(tag === "img") {
 							/*图片，改src*/
 							callback(o.attr("src", url));
-							console.log(3);
 						} else {
 							/*非图片，load资源*/
 							o.load(url, {}, function() {
 								callback(o);
 							});
-							console.log(4);
 						}
 						data.obj = null;
 						/*已经加载的资源不再加载*/
@@ -62,10 +60,8 @@
 				}
 			});
 		};
-		console.log(2);
 		loading();
 		/*添加scroll事件*/
 		params.container.bind("scroll", loading);
-		console.log(5);
 	};
 })(jQuery);
