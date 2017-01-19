@@ -1,73 +1,73 @@
 # lazyload
 
-### �ӳټ��� ҳ�����ʱͼƬ��Ԫ��
+### 延迟加载 页面滚动时图片等元素
 
 ##v1.2
 
-���Ӳ�����threshold `//��ǰ��ʼ���أ�Ĭ��Ϊ0`
+增加参数：threshold `//提前开始加载，默认为0`
 
-���������뿴����`���ò���`
+参数详情请看下面`可用参数`
 
 ##v1.1
 
 bug fix: 
 
-�޸�Ԫ���Ƿ�����ͼ�ڵ��ж����⣺
+修复元素是否在视图内的判定问题：
 
-&amp;&amp;���ȼ�����||
+&amp;&amp;优先级高于||
 
 ##v1.0
 
-##ʹ��˵����
+##使用说明：
 
-��Ҫ�ȵ���jQuery.js��Ȼ���ٵ���jquery.lazyload.js
+需要先调用jQuery.js，然后再调用jquery.lazyload.js
 
-Ȼ����ò����
+然后调用插件：
 
 		$(".lazyload").lazyload();
 
--��ʾ����class��Ϊlazyload��Ԫ�ذ����ӳټ���lazyload
+-表示所有class名为lazyload的元素绑定了延迟加载lazyload
 
-����ص�Ԫ��ԭ��ַ������Ԫ�ص�data-url�����ϣ�����
+需加载的元素原地址，绑定在元素的data-url属性上，例：
 
 		<div class="lazyload" data-url="loaded.html">WAIT LOADING</div>
 
-##���ò�����
+##可用参数：
 
 <table>
 	<tr>
-		<th>����</th>
-		<th>Ĭ��ֵ</th>
-		<th>����</th>
+		<th>参数</th>
+		<th>默认值</th>
+		<th>解释</th>
 	</tr>
 	<tr>
 		<td>attr</td>
 		<td>data-url</td>
-		<td>��ȡԪ�ؼ��ص�ַ����������</td>
+		<td>获取元素加载地址的属性名。</td>
 	</tr>
 	<tr>
 		<td>container</td>
 		<td>$(window)</td>
-		<td>������������Ĭ����ҳ������</td>
+		<td>滚动的容器；默认网页滚动。</td>
 	</tr>
 	<tr>
 		<td>callback</td>
 		<td>$.noop</td>
-		<td>�ص�������������ɺ�ִ�еĻص�������Ĭ��Ϊ�պ�����</td>
+		<td>回调函数，加载完成后执行的回调函数；默认为空函数。</td>
 	</tr>
 	<tr>
 		<td>threshold</td>
 		<td>0</td>
-		<td>ֵΪ����,����ҳ��߶�.������Ϊ200,��ʾ����������Ŀ��λ�û���200�ĸ߶�ʱ�Ϳ�ʼ����ͼƬ,�������������û����</td>
+		<td>值为数字,代表页面高度.如设置为200,表示滚动条在离目标位置还有200的高度时就开始加载图片,可以做到不让用户察觉</td>
 	</tr>
 </table>
 
-**ʾ����**
+**示例如下：**
 
 		$(".lazyload").lazyload({
 			container: $("#divdiv"),
 			callback: function(){
 				this.style.backgroud-color="#333"
-			}��
+			}，
 			threshold:100
 		});
