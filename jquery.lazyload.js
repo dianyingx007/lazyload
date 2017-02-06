@@ -62,6 +62,6 @@
 		};
 		loading();
 		/*添加scroll事件*/
-		params.container.bind("scroll", loading);
+		params.container.on("scroll", loading);
 	};
 })(jQuery);
